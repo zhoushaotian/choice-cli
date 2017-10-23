@@ -1,4 +1,5 @@
-'use strict';
+#!/usr/bin/env node
+
 const program = require('commander');
 const down = require('download-git-repo');
 const path = require('path');
