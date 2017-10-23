@@ -2,5 +2,5 @@
 ## usage
 ```
 // 安装react项目脚手架到test目录
-choice react-scaffold  test
+choice-init react-scaffold  test
 ```
