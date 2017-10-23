@@ -1,0 +1,40 @@
+{
+  "name": "choice-cli",
+  "version": "1.0.0",
+  "description": "a cli like vue-cli as my demo",
+  "bin": {
+    "choice": "bin/choice-init"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhoushaotian/vue-cli.git"
+  },
+  "keywords": [
+    "cli"
+  ],
+  "author": "tian",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.5.0",
+    "chalk": "^2.2.0",
+    "commander": "^2.11.0",
+    "consolidate": "^0.14.5",
+    "download-git-repo": "^1.0.1",
+    "handlebars": "^4.0.11",
+    "inquirer": "^3.3.0",
+    "metalsmith": "^2.3.0",
+    "ora": "^1.3.0",
+    "read-metadata": "^1.0.0",
+    "rimraf": "^2.6.2",
+    "user-home": "^2.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.9.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-html": "^3.2.2",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.0",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1"
+  }
+}

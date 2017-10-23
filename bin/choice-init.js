@@ -1,0 +1,89 @@
+'use strict';
+const program = require('commander');
+const down = require('download-git-repo');
+const path = require('path');
+const home = require('user-home');
+const rm = require('rimraf').sync;
+const exists = require('fs').existsSync;
+
+const cachePath = path.join(home, '.chioice');  // 本地的缓存目录
+const log = require('../lib/log');
+const buildTemplate = require('../lib/build').buildTemplate;
+
+/**
+ * 初始化命令
+ */
+program.usage('<template-name> [path]')
+    .option('-c, --clone', 'use git clone')
+    .option('-t, --temp', 'use local cache');
+
+/**
+ * 帮助信息
+ */
+program.on('--help', function() {
+    log.infoLog('this is a cli tool like vue-cli');
+    log.infoLog('examples:');
+    log.infoLog('build a template by scaffold:');
+    log.infoLog('vue-cli react-scaffold path');
+    log.infoLog('to use git clone:');
+    log.infoLog('vue-cli react-scaffold project -c');
+    log.infoLog('to use local cache please add option -t');
+});
+
+function initArgs() {
+    program.parse(process.argv);
+    if(program.args.length < 1) {
+        return program.help();
+    }
+}
+
+initArgs();
+/**
+ * 参数解析
+ */
+const template = program.args[0];
+const projectPath = program.args[1];
+const clone = program.clone;
+const useCache = program.temp;
+
+
+/**
+ * 下载并构建模板
+ * 
+ */
+function run() {
+    if(exists(path.join(cachePath, template)) && !useCache) {
+        // 如果目标目录存在且不使用本地缓存的话直接删除这个目录
+        rm(path.join(cachePath, template));
+    }
+    downTempalte(template, function() {
+        let des = projectPath || '.';
+        buildTemplate(path.resolve(des), cachePath, err => {
+            if(err) {
+                log.errorLog(err.message);
+                return log.errorLog('build the template failed!');
+            }
+            log.succeedLog(`build the template at ${path.resolve(des)}`);
+            log.infoLog('please run npm install');
+        });
+    });
+}
+run();
+/**
+ * 下载模板
+ * 
+ * @param {String} template 模板名
+ * @param {Function} cb 下载成功之后的回调
+ */
+function downTempalte(template, cb) {
+    let spinner = log.spinner('start download template').start();
+    down(`github:zhoushaotian/${template}`, cachePath, {
+        clone
+    }, function(err) {
+        if(err) {
+            return spinner.fail(`download ${template} failed, please check the template name!`);
+        }
+        spinner.succeed('download template succeed!');
+        return cb();
+    });
+}
