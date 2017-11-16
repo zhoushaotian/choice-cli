@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-
+/* eslint-disable*/
 const program = require('commander');
 const down = require('download-git-repo');
 const path = require('path');

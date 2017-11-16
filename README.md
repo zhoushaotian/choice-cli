@@ -8,4 +8,5 @@ choice-init react-scaffold  test
 - vue模式
 - react模式
 - simple模式(只有eslint以及babel)
+### 多模式功能完成 finished at 2017.11.16
 
