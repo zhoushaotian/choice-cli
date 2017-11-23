@@ -14,7 +14,7 @@ const buildTemplate = require('../lib/build').buildTemplate;
 /**
  * 初始化命令
  */
-program.usage('<template-name> [path]')
+program.usage('[path]')
     .option('-c, --clone', 'use git clone')
     .option('-t, --temp', 'use local cache');
 
@@ -24,26 +24,17 @@ program.usage('<template-name> [path]')
 program.on('--help', function() {
     log.infoLog('this is a cli tool like vue-cli');
     log.infoLog('examples:');
-    log.infoLog('build a template by scaffold:');
-    log.infoLog('vue-cli react-scaffold path');
-    log.infoLog('to use git clone:');
-    log.infoLog('vue-cli react-scaffold project -c');
-    log.infoLog('to use local cache please add option -t');
+    log.infoLog('choice-cli examples');
+    log.infoLog('this commander will build template at ./examples');
 });
 
-function initArgs() {
-    program.parse(process.argv);
-    if(program.args.length < 1) {
-        return program.help();
-    }
-}
 
-initArgs();
+program.parse(process.argv);
 /**
  * 参数解析
  */
-const template = program.args[0];
-const projectPath = program.args[1];
+const template = 'react-scaffold';
+const projectPath = program.args[0];
 const clone = program.clone;
 const useCache = program.temp;
 
