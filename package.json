@@ -1,6 +1,6 @@
 {
   "name": "choice-cli",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "a cli like vue-cli as my demo",
   "bin": {
     "choice-init": "bin/choice-init"
