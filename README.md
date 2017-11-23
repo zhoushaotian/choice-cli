@@ -1,12 +1,14 @@
 # 一个类似vue-cli的脚手架工具
 ## usage
 ```
-// 安装react项目脚手架到test目录
-choice-init react-scaffold  test
+// 全局安装choice-cli 
+npm install choice-cli -g
+// 构建模板到test目录
+choice-init test
 ```
-## todos: 多模式公用一个模板文件 creacted at 2017.11.16
-- vue模式
-- react模式
-- simple模式(只有eslint以及babel)
-### 多模式功能完成 finished at 2017.11.16
+## mode
+- react  
+- vue
+- simple  
+simple 模式只会build eslint和babel配置文件
 
