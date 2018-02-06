@@ -1,4 +1,5 @@
 # 一个类似vue-cli的脚手架工具
+## 更新webpack配置 created at 2018.2.6 see [template](https://github.com/zhoushaotian/react-scaffold)
 ## usage
 ```
 // 全局安装choice-cli 
